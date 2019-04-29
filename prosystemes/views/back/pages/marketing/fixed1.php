@@ -285,19 +285,17 @@
             </div>
             <div class="box-body">
               <div class="box-footer">
-                <form method="POST" action="rechercheEvenement.php" style="display:inline;">
+                <form method="POST" action="" style="display:inline;">
                 <div class="form-group">
-                  <input type="text"  name="enter" placeholder="Enter...">
-                <button type="submit" name="search" class="btn btn-primary">Search Event</button>
+                  <input type="text"  name="enter" id="search" placeholder="Enter...">
                 </div>
                 </form>
-                <?PHP
-include "../../../cores/evenementC.php";
-$evenement1C=new EvenementC();
-$listeEvenements=$evenement1C->afficherEvenements();
-
-//var_dump($listeEmployes->fetchAll());
-?>
+                <?php
+                include "../../../cores/evenementC.php";
+                $evenement1C=new EvenementC();
+                $listeEvenements=$evenement1C->afficherEvenements();
+                ?>
+ <div id="a">
                <table class="table">
 <tr>
 <td>Nom</td>
@@ -326,7 +324,9 @@ foreach($listeEvenements as $row){
   <?PHP
 }
 ?>
+
 </table>
+               </div>
               <form method="POST" action="name.php" style="display:inline;">
                 <button type="submit" name="name" class="btn btn-primary">Display by Name</button>
               </form>
@@ -415,5 +415,6 @@ foreach($listeEvenements as $row){
 <!-- fullCalendar -->
 <script src="../../bower_components/moment/moment.js"></script>
 <script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="func.js"></script>
 </body>
 </html>

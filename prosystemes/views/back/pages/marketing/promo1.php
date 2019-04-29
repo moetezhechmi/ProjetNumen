@@ -14,15 +14,6 @@
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
-  <!-- fullCalendar -->
-  <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.min.css">
-  <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -285,10 +276,9 @@
             </div>
             <div class="box-body">
               <div class="box-footer">
-                <form method="POST" action="recherchePromotion.php" style="display:inline;">
+                <form method="POST" action="" style="display:inline;">
                 <div class="form-group">
-                  <input type="text"  name="enter" placeholder="Enter...">
-                <button type="submit" name="search" class="btn btn-primary">chercher Promotion</button>
+                  <input type="text"  name="enter" id="search" placeholder="Enter...">
                 </div>
                 </form>
                 <?PHP
@@ -298,6 +288,7 @@ $listePromotions=$promotion1C->afficherPromotions();
 
 //var_dump($listeEmployes->fetchAll());
 ?>
+<div id="a">
                 <table class="table">
 <tr>
 <td>Id_produit</td>
@@ -325,6 +316,7 @@ foreach($listePromotions as $row){
 }
 ?>
 </table>
+</div>
             <form method="POST" action="name1.php" style="display:inline;">
                 <button type="submit" name="name" class="btn btn-primary">Display by Product Id</button>
               </form>
@@ -370,19 +362,9 @@ foreach($listePromotions as $row){
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap color picker -->
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
-<!-- fullCalendar -->
 <script src="../../bower_components/moment/moment.js"></script>
-<script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="funcpromo.js"></script>
 </body>
 </html>
