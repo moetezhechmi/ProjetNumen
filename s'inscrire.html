@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,34 +32,6 @@ session_start();
 	<header class="header">
 		<div class="header_container">
 			<div class="container">
-				<div class="row">
-						<li class="nav-item dropdown no-arrow">
-             				 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             					<i class="far fa-user"></i>
-
-                					<span class="mr-2 d-none d-lg-inline text-gray-600 small "><?php
-                					
-                						echo $_SESSION['email'];
-                					
-
-
-                					  ?></span>
-                					
-              				</a>
-             							 <!-- Dropdown - User Information -->
-             							 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              								  <a class="dropdown-item" href="profil.php">
-                									  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                										  Profile
-                							  </a>
-               									 <div class="dropdown-divider"></div>
-               										 <a class="dropdown-item" href="deconnexion.php" >
-               										   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                									  Deconnexion
-               										 </a>
-            							  </div>
-          				  </li>
-				</div>
 				<div class="row">
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
@@ -244,57 +214,89 @@ session_start();
 				<!-- Billing Info -->
 				<div class="col-lg-6">
 					<div class="billing checkout_section">
-						<div class="section_title">mettre a jour vos données personnels </div>
+						<div class="section_title">s'inscrire </div>
 						
 						<div class="checkout_form_container">
-							<form action="modifierClient.php" method="post" id="checkout_form" class="checkout_form">
+							<form action="ajoutClient.php" method="post" id="checkout_form" class="checkout_form" name="inscription" onsubmit="return Validate()">
 								<div class="row">
-									
+									<div class="col-xl-6">
+										<!-- Name -->
+										<label for="prenom">Prenom*</label>
+										<input type="text" id="prenom" name="prenom" class="checkout_input" required onkeyup="lettersonly(this)">
+									</div>
+									<div class="col-xl-6 last_name_col">
+										<!-- Last Name -->
+										<label for="nom">Nom*</label>
+										<input type="text" id="nom" name="nom" class="checkout_input" required onkeyup="lettersonly(this)">
+									</div>
+								</div>
+								<div>
+									<!-- Company -->
+									<label for="date">Date de naissance</label>
+									<input type="text" id="date" name="date" class="checkout_input"  required placeholder="aaaa/mm/jj" class="checkout_input">
+								</div>
+								
+							   <div class="row">
+      <legend class="col">Sexe</legend>
+      <div class="col-sm-8">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexe" id="gridRadios1" value="homme" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Homme
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexe" id="gridRadios2" value="femme">
+          <label class="form-check-label" for="gridRadios2">
+            Femme
+          </label>
+        </div></div><br>
 								<div>
 									<!-- Zipcode -->
-									<label for="checkout_zipcode">Code Postale*</label>
-									<input type="text" id="checkout_zipcode" class="checkout_input" required onkeyup="numbersonly(this)" name="code" value="<?php echo($_SESSION['code']) ?>">
+									<label for="code">Code Postale*</label>
+									<input type="text" id="code" name="code" class="checkout_input" required onkeyup="numbersonly(this)">
 								</div>
 								<div>
 									<!-- City / Town -->
-									<label for="checkout_city">ville*</label>
-									<select name="ville" id="checkout_city" class="dropdown_item_select checkout_input" require="required">
-										<option  value="<?php echo($_SESSION['ville']) ?>"></option>
-										<option>Ariana</option>
-										<option>ben arous</option>
-										<option>Gafsa</option>
-										<option>touzer</option>
-										<option>Djerba</option>
-										<option>Manouba</option>
-										<option>Mourouj</option>
+									<label for="ville">ville*</label>
+									<select name="ville" id="ville" class="dropdown_item_select checkout_input" require="required">
+										
+										<option value="Ariana">Ariana</option>
+										<option value="ben arous">ben arous</option>
+										<option value="gafsa">Gafsa</option>
+										<option value="touzer">touzer</option>
+										<option value="djerba">Djerba</option>
+										<option value="Manouba">Manouba</option>
+										<option value="Mourouj">Mourouj</option>
 									</select>
 								</div>
 								
 									
 								<div>
 									<!-- Phone no -->
-									<label for="checkout_phone">Numero de Telephone*</label>
-									<input type="phone" id="checkout_phone" class="checkout_input" required onkeyup="numbersonly(this)" name="num"  value="<?php echo($_SESSION['num']) ?>">
+									<label for="num">Numero de Telephone*</label>
+									<input type="phone" id="num" class="checkout_input" name="num" required onkeyup="numbersonly(this) ">
 								</div>
 								<div>
 									<!-- Email -->
-									<label for="checkout_email">Adresse mail*</label>
-									<input type="phone" id="checkout_email" required placeholder="mail@serveur.com" class="checkout_input" required="required" name="email" value="<?php echo($_SESSION['email']) ?>">
+									<label for="email">Adresse mail*</label>
+									<input type="email" id="email" required placeholder="mail@serveur.com" name="email" class="checkout_input" required="required">
 								</div>
 
 								<div>
 									<!-- Email -->
-									<label for="checkout_passoword">mot de passe*</label>
-									<input type="password" id="checkout_password" required placeholder="alphanumerique" class="checkout_input" required="required">
+									<label for="passoword">mot de passe*</label>
+									<input type="password" id="password" name="password" required placeholder="alphanumerique" class="checkout_input" required="required">
 								</div>
 
 								<div>
 									<!-- Email -->
 									<label for="confirme_password">confirmez mot de passe*</label>
-									<input type="password" id="confirme_password" required placeholder="alphanumerique" class="checkout_input" required="required">
+									<input type="password" name="confirme_password" id="confirme_password" required placeholder="alphanumerique" class="checkout_input" required="required">
+									<div id="password_error" style="color: #FF1F1F;"></div>
 								</div>
 
-								<input type="submit" name="bttmodifier" value="modifier">
+								<button type="submit" class="btn btn-primary btn-block btn-flat"  name="bttsign">s'inscrire</button>
 							</form>
 						</div>
 					</div>
@@ -312,8 +314,8 @@ session_start();
 					<div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
 						<div class="footer_logo"><a href="#">ProS.</a></div>
 						<div class="copyright ml-auto mr-auto"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </div>
 						<div class="footer_social ml-lg-auto">
 							<ul>
 								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -328,6 +330,26 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 </div>
+
+<script type="text/javascript">
+
+	var password = document.forms["inscription"]["password"];
+	var password_confirmation = document.forms["inscription"]["confirme_password"];
+
+	var password_error = document.getElementById("password_error");
+
+
+	function Validate(){
+		if (password.value != password_confirmation.value) {
+			password_error.textContent = "Les deux mots de passe ne sont pas identiques";
+			password.style.border = "1px solid red";
+			password_confirmation.style.border = "1px solid red";
+			password.focus();
+			return false;
+		}
+
+	}
+</script>
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>

@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Checkout</title>
+<title>s'authentifier</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
@@ -55,7 +55,7 @@ session_start();
                 										  Profile
                 							  </a>
                									 <div class="dropdown-divider"></div>
-               										 <a class="dropdown-item" href="deconnexion.php" >
+               										 <a class="dropdown-item" href="deconnexion.php" data-toggle="modal" data-target="#logoutModal">
                										   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 									  Deconnexion
                										 </a>
@@ -69,24 +69,24 @@ session_start();
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Home</a>
+										<a href="index.php">Home</a>
 										<ul>
 											<li><a href="product.html">Product</a></li>
 											<li><a href="cart.html">Cart</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categorie-1.html">Categories</a>
+										<a href="categorie-1.php">Categories</a>
 										<ul>
-											<li><a href="categorie-1.html">Camera de surveillance</a></li>
-											<li><a href="categorie-2.html">Ordinateurs et Accessoires</a></li>
-											<li><a href="categorie-3.html">Televisions et Accessoires</a></li>
+											<li><a href="categorie-1.php">Camera de surveillance</a></li>
+											<li><a href="categorie-2.php">Ordinateurs et Accessoires</a></li>
+											<li><a href="categorie-3.php">Televisions et Accessoires</a></li>
 										</ul>
 									</li>
 									
 									<li><a href="#">Services</a></li>
 									<li><a href="contact.html">Contact</a></li>
-									<li><a href="checkout.html">Check out</a></li>
+									<li><a href="checkout.php">Check out</a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
@@ -173,25 +173,25 @@ session_start();
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+						<a href="index.php">Home<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Categories<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="checkout.php">Checkout<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
+						<a href="categories.php">Categories<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Category<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Category<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Category<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Category<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Accessories<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="index.php">Accessories<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Offers<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
 				</ul>
@@ -222,7 +222,7 @@ session_start();
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Home</a></li>
+										<li><a href="index.php">Home</a></li>
 										<li><a href="cart.html">Shopping Cart</a></li>
 										<li>Checkout</li>
 									</ul>
@@ -244,61 +244,50 @@ session_start();
 				<!-- Billing Info -->
 				<div class="col-lg-6">
 					<div class="billing checkout_section">
-						<div class="section_title">mettre a jour vos données personnels </div>
+						<div class="section_title">s'authentifier</div>
 						
 						<div class="checkout_form_container">
-							<form action="modifierClient.php" method="post" id="checkout_form" class="checkout_form">
-								<div class="row">
-									
+							<form action="login.php" method="post" name="f">
+								
 								<div>
-									<!-- Zipcode -->
-									<label for="checkout_zipcode">Code Postale*</label>
-									<input type="text" id="checkout_zipcode" class="checkout_input" required onkeyup="numbersonly(this)" name="code" value="<?php echo($_SESSION['code']) ?>">
-								</div>
-								<div>
-									<!-- City / Town -->
-									<label for="checkout_city">ville*</label>
-									<select name="ville" id="checkout_city" class="dropdown_item_select checkout_input" require="required">
-										<option  value="<?php echo($_SESSION['ville']) ?>"></option>
-										<option>Ariana</option>
-										<option>ben arous</option>
-										<option>Gafsa</option>
-										<option>touzer</option>
-										<option>Djerba</option>
-										<option>Manouba</option>
-										<option>Mourouj</option>
-									</select>
+									<!-- Company -->
+									<label for="email">email*</label>
+									<input type="text" id="email" name="email" class="checkout_input">
 								</div>
 								
-									
+								
 								<div>
-									<!-- Phone no -->
-									<label for="checkout_phone">Numero de Telephone*</label>
-									<input type="phone" id="checkout_phone" class="checkout_input" required onkeyup="numbersonly(this)" name="num"  value="<?php echo($_SESSION['num']) ?>">
+									<!-- Zipcode -->
+									<label for="pwd">mot de passe*</label>
+									<input type="password" id="pwd" name="pwd" class="checkout_input" >
 								</div>
-								<div>
-									<!-- Email -->
-									<label for="checkout_email">Adresse mail*</label>
-									<input type="phone" id="checkout_email" required placeholder="mail@serveur.com" class="checkout_input" required="required" name="email" value="<?php echo($_SESSION['email']) ?>">
-								</div>
+					
+                <div>
+					<font>
+						si vous avez oubliez votre mot de passe 
+					</font>
+					    <a href="recupire.php"> mot de passe oublier </a>
+				</div>
+				<br>
+				<br>
 
-								<div>
-									<!-- Email -->
-									<label for="checkout_passoword">mot de passe*</label>
-									<input type="password" id="checkout_password" required placeholder="alphanumerique" class="checkout_input" required="required">
-								</div>
 
-								<div>
-									<!-- Email -->
-									<label for="confirme_password">confirmez mot de passe*</label>
-									<input type="password" id="confirme_password" required placeholder="alphanumerique" class="checkout_input" required="required">
-								</div>
 
-								<input type="submit" name="bttmodifier" value="modifier">
+			  	<div>
+			  			<font>
+					           si vous n'avez pas de compte inscrivez-vous
+				        </font>
+				         	<a href="s'inscrire.html">  S'inscrire</a>
+				</div>
+				<br>
+
+				
+								<button type="submit" onclick="verif();" class="btn btn-primary btn-block btn-flat" name="bttLogin">Sign In</button>
 							</form>
 						</div>
 					</div>
 				</div>
+				
 
 				
 	<!-- Footer -->
@@ -311,9 +300,9 @@ session_start();
 				<div class="col">
 					<div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
 						<div class="footer_logo"><a href="#">ProS.</a></div>
-						<div class="copyright ml-auto mr-auto"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+						<div class="copyright ml-auto mr-auto">
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </div>
 						<div class="footer_social ml-lg-auto">
 							<ul>
 								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>

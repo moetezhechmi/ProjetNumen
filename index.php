@@ -1,8 +1,3 @@
-
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +29,12 @@ session_start();
              				 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              					<i class="far fa-user"></i>
 
-                					<span class="mr-2 d-none d-lg-inline text-gray-600 small "><?php
-                					
-                						echo $_SESSION['email'];
-                					
+                					<span class="mr-2 d-none d-lg-inline text-gray-600 small ">
+                						<?php
+
+                						 	session_start();
+                						 	echo $_SESSION['email'];
+
 
 
                 					  ?></span>
@@ -82,7 +79,7 @@ session_start();
 									<li><a href="panne.html">Services</a></li>
 									<li><a href="contact.html">Contact</a></li>
 									<li><a href="checkout.html">Check out</a></li>
-									<li><a href="s'authentifier.php">S'authentifier</a></li>
+									<li><a href="authentifier.php">S'authentifier</a></li>
 
 								</ul>
 							</nav>

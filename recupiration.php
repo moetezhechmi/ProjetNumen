@@ -1,6 +1,8 @@
 <?php
 require_once ('../PHPMailer/PHPMailerAutoload.php');
-include('connect.php');
+include('../../connect.php');
+
+
 
 if(!empty($_POST)){
 	extract($_POST);

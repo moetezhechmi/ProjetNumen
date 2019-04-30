@@ -1,3 +1,3 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '', 'prosysteme');
+$con = mysqli_connect('localhost', 'prosysteme', 'prosysteme', 'prosysteme');
